@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LojaTeree" language="groovy" pageWidth="180" pageHeight="226" columnWidth="140" leftMargin="20" rightMargin="20" topMargin="4" bottomMargin="20" uuid="2531eb1f-2ebf-409e-96e9-1c4f312582b2">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ID_VENDA" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     tb_clientes.`nome` AS tb_clientes_nome,
+     tb_clientes.`cpf` AS tb_clientes_cpf,
+     tb_clientes.`celular` AS tb_clientes_celular,
+     tb_clientes.`cep` AS tb_clientes_cep,
+     tb_clientes.`endereco` AS tb_clientes_endereco,
+     tb_clientes.`numero` AS tb_clientes_numero,
+     tb_clientes.`complemento` AS tb_clientes_complemento,
+     tb_clientes.`bairro` AS tb_clientes_bairro,
+     tb_clientes.`cidade` AS tb_clientes_cidade,
+     tb_clientes.`estado` AS tb_clientes_estado,
+     tb_produtos.`descricao` AS tb_produtos_descricao,
+     tb_produtos.`preco_de_venda` AS tb_produtos_preco_de_venda,
+     tb_vendas.`total_venda` AS tb_vendas_total_venda,
+     tb_itensvendas.`id` AS tb_itensvendas_id,
+     tb_itensvendas.`qtd` AS tb_itensvendas_qtd,
+     tb_itensvendas.`subtotal` AS tb_itensvendas_subtotal
+FROM
+     `tb_clientes` tb_clientes INNER JOIN `tb_vendas` tb_vendas ON tb_clientes.`id` = tb_vendas.`cliente_id`
+     INNER JOIN `tb_itensvendas` tb_itensvendas ON tb_vendas.`id` = tb_itensvendas.`venda_id`
+     INNER JOIN `tb_produtos` tb_produtos ON tb_itensvendas.`produto_id` = tb_produtos.`id`
+WHERE TB_VENDAS.ID = $P{ID_VENDA}]]>
+	</queryString>
+	<field name="tb_clientes_nome" class="java.lang.String"/>
+	<field name="tb_clientes_cpf" class="java.lang.String"/>
+	<field name="tb_clientes_celular" class="java.lang.String"/>
+	<field name="tb_clientes_cep" class="java.lang.String"/>
+	<field name="tb_clientes_endereco" class="java.lang.String"/>
+	<field name="tb_clientes_numero" class="java.lang.Integer"/>
+	<field name="tb_clientes_complemento" class="java.lang.String"/>
+	<field name="tb_clientes_bairro" class="java.lang.String"/>
+	<field name="tb_clientes_cidade" class="java.lang.String"/>
+	<field name="tb_clientes_estado" class="java.lang.String"/>
+	<field name="tb_produtos_descricao" class="java.lang.String"/>
+	<field name="tb_produtos_preco_de_venda" class="java.math.BigDecimal"/>
+	<field name="tb_vendas_total_venda" class="java.math.BigDecimal"/>
+	<field name="tb_itensvendas_id" class="java.lang.Integer"/>
+	<field name="tb_itensvendas_qtd" class="java.lang.Integer"/>
+	<field name="tb_itensvendas_subtotal" class="java.math.BigDecimal"/>
+	<title>
+		<band height="53" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="58" height="48" uuid="29771aeb-e44c-49bc-8248-b1aed998f6fb"/>
+				<imageExpression><![CDATA["C:\\Users\\Walan\\Desktop\\Dbs.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="44">
+			<textField>
+				<reportElement x="79" y="1" width="46" height="10" uuid="7dad5fd5-7fea-4ab6-9edd-5f52116f466c"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="66" y="1" width="21" height="10" uuid="93a345f0-7fdf-46f4-a755-a265cc1309d5"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="10" uuid="a7e49ec1-80a4-4b0e-a50a-1f9a78c101c8"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="17" y="0" width="54" height="10" uuid="f1ad0c3e-085f-4dc8-b084-9a8a75b97c57"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_clientes_nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="10" width="40" height="10" uuid="903432ea-6d8d-4e8e-ab77-bc0976d2af82"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[TELEFONE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="10" width="45" height="10" uuid="d4db3eba-9531-4148-955f-a2a6dc3e1628"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="40" height="10" uuid="170d482d-7ddf-484d-b42c-064834d80ec2"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[ENDEREÇO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="20" width="59" height="10" uuid="7377082f-de32-496d-95c2-9cfe65fcdba8"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_clientes_endereco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="87" y="20" width="13" height="10" uuid="58ce6878-1013-4869-8bec-35354c9bb98f"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[N°:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="20" width="44" height="11" uuid="6bc17c19-ca26-468d-9fce-37871061812a"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_clientes_numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="32" width="35" height="12" uuid="97f1413a-b8c5-4172-9f1c-d6cd5f9ab910"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="32" width="26" height="12" uuid="93c2b4d1-3ced-4e8a-9b83-59ab140f854b"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="32" width="21" height="12" uuid="b0cb0feb-5d75-4027-bfe2-1c34ae50b2da"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTD:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="35" height="11" uuid="239cdb58-f376-4b42-aa7e-74bcbf0903e9"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_produtos_descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="35" y="0" width="31" height="11" uuid="31cd0109-9267-41c3-9276-2bf51b0b5df2"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_produtos_preco_de_venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="1" width="21" height="11" uuid="14563de3-4db5-41e8-95e1-decd2f4422f9"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_itensvendas_qtd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="12">
+			<staticText>
+				<reportElement x="0" y="1" width="29" height="11" uuid="984a4422-179f-4da3-8a54-9ad29bd1ef8c"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUBTOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="29" y="1" width="45" height="11" uuid="36689fb4-6685-4588-b9fb-667f86677b56"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_itensvendas_subtotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="76" y="1" width="30" height="9" uuid="aa0fdb7a-3097-4bbf-b843-81e1079e5499"/>
+				<textElement>
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="97" y="1" width="30" height="11" uuid="7ec30431-cdc1-4384-bcbc-63528b29fed3"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_vendas_total_venda}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LojaTeree" language="groovy" pageWidth="180" pageHeight="450" whenNoDataType="NoPages" columnWidth="140" leftMargin="20" rightMargin="20" topMargin="4" bottomMargin="20" uuid="2531eb1f-2ebf-409e-96e9-1c4f312582b2">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="distribuidora"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<parameter name="ID_VENDA" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select tb_vendas.id Codigo ,tb_clientes.nome
+                     AS Nome,tb_clientes.celular
+                     AS Celular,tb_clientes.endereco
+                     AS Endereço,tb_clientes.numero
+                     AS Numero, tb_clientes.bairro
+                     AS Bairro, tb_clientes.cidade
+                     AS Cidade ,tb_itensvendas.subtotal
+                     AS SubTatotal, tb_produtos.descricao
+                     AS Descrição, tb_vendas.total_venda
+                     AS Total_Da_Venda
+                     from  tb_produtos
+                     INNER JOIN tb_itensvendas
+                     ON tb_produtos.id = tb_itensvendas.produto_id
+                     INNER JOIN tb_vendas
+                     ON tb_itensvendas.venda_id = tb_vendas.id 
+                     INNER JOIN tb_clientes 
+                     ON tb_vendas.cliente_id = tb_clientes.id
+                     where tb_vendas.id  =  $P{ID_VENDA}]]>
+	</queryString>
+	<field name="Codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="Codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_vendas"/>
+	</field>
+	<field name="Nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Celular" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="celular"/>
+		<property name="com.jaspersoft.studio.field.label" value="Celular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Endereço" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.label" value="Endereço"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+	</field>
+	<field name="Numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numero"/>
+		<property name="com.jaspersoft.studio.field.label" value="Numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bairro"/>
+		<property name="com.jaspersoft.studio.field.label" value="Bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_clientes"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SubTatotal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="subtotal"/>
+		<property name="com.jaspersoft.studio.field.label" value="SubTatotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_itensvendas"/>
+	</field>
+	<field name="Descrição" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.label" value="Descrição"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_produtos"/>
+	</field>
+	<field name="Total_Da_Venda" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_venda"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total_Da_Venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_vendas"/>
+	</field>
+	<title>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="58" y="3" width="92" height="38" uuid="80b80ef6-1052-4008-9f76-3ae4d63dff41"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Avenida Amazonas , 4808-Noca Suiça, Belo Horizonte - Mg, 30427-026 Cnpj: 22.823.190/0003-44]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="57" height="27" uuid="aefcc2a5-151f-4149-b339-d2f88dcd8b7a"/>
+				<imageExpression><![CDATA["C:/Users/Walan/Desktop/Captura de tela 2024-03-11 185333.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="186">
+			<staticText>
+				<reportElement x="0" y="0" width="58" height="20" uuid="4d739d56-8a80-4066-9ff3-fbfbe24f5a6c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b125e348-130f-46b9-aa3e-06105f21492c"/>
+				</reportElement>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="15" width="70" height="17" uuid="ae86be79-b557-4d3c-bdb9-75d43ac29b66">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b125e348-130f-46b9-aa3e-06105f21492c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Descrição}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="95" y="3" width="34" height="14" uuid="a7771a04-7646-4142-9781-23123af9df5b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b125e348-130f-46b9-aa3e-06105f21492c"/>
+				</reportElement>
+				<text><![CDATA[Valor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="17" width="48" height="14" uuid="0cb33117-f7dc-41a0-ae78-91f959709133"/>
+				<textFieldExpression><![CDATA[$F{SubTatotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="199">
+			<staticText>
+				<reportElement x="-2" y="-139" width="75" height="13" uuid="4b07a103-27c2-4b4a-97c9-ddfacb0e763b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a7a96d2-57d2-47f8-99d6-b1d38ed96914"/>
+				</reportElement>
+				<text><![CDATA[Total Da Venda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="73" y="-139" width="65" height="13" uuid="f5672971-9986-4413-9799-2ff46f885c50">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a7a96d2-57d2-47f8-99d6-b1d38ed96914"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Total_Da_Venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-126" width="90" height="17" uuid="33f82a5e-9d49-4d5d-a619-dc6a435128cc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="7" y="-103" width="132" height="129" uuid="ee898988-c4f3-4a17-9c7e-0c2d84c6ebf2"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA["123456789"]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<staticText>
+				<reportElement x="7" y="29" width="140" height="30" uuid="6c39f591-bc64-481c-aaf2-566941b3b374"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Tributos Incidentes Lei Federal 12.741/12 - Total: R$ 47,05 Federal ai R$ 47,05 Estatual R% 0,00 Municiapl R$ 0,00]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>
